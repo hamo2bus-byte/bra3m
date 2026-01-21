@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية براعم | للتخاطب وتنمية المهارات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- المتغيرات والألوان --- */
+        :root {
+            --primary: #4cc9f0;      /* أزرق سماوي - يرمز للهدوء */
+            --secondary: #4361ee;    /* أزرق غامق - للثقة */
+            --accent: #f72585;       /* وردي/فوشيا - للحيوية */
+            --orange: #ff9f1c;       /* برتقالي - للطاقة */
+            --text: #2b2d42;         /* لون النص */
+            --light-bg: #f8f9fa;     /* خلفية فاتحة */
+            --white: #ffffff;
+        }
+
+        /* --- التنسيق العام --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Almarai', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* --- الهيدر (القائمة العلوية) --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        /* زر الحجز في الهيدر */
+        .cta-btn {
+            background-color: var(--orange);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .cta-btn:hover { background-color: #e08e12; transform: translateY(-2px); }
+
+        /* --- قسم الهيرو (الواجهة الرئيسية) --- */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* دوائر تجميلية في الخلفية */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .main-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(247, 37, 133, 0.3);
+            transition: 0.3s;
+        }
+        .main-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(247, 37, 133, 0.4);
+        }
+
+        /* --- قسم الخدمات --- */
+        .services {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--orange);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-bottom: 5px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--accent);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: #eef4ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* --- قسم من نحن --- */
+        .about {
+            background-color: var(--white);
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-text { flex: 1; }
+        .about-img { flex: 1; }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .features-list i {
+            color: var(--accent);
+            margin-left: 10px;
+        }
+
+        /* --- الفوتر --- */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 50px 10%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content h2 { margin-bottom: 20px; }
+        .footer-content p { font-size: 1.2rem; opacity: 0.9; }
+        
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20ba5a; }
+
+        /* --- التجاوب مع الموبايل --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; font-size: 0.9rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about { text-align: center; flex-direction: column-reverse; }
+            .about-img img { box-shadow: none; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">أكاديمية <span>براعم</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#about">من نحن</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="cta-btn">تواصل معنا</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>نصنع مستقبلاً أفضل لطفلك</h1>
+            <p>أكاديمية متخصصة في جلسات التخاطب، تعديل السلوك، وتنمية مهارات الأطفال، بالإضافة لحضانة تعليمية متميزة.</p>
+            <a href="https://wa.me/201000000000" class="main-btn">احجز استشارة مجانية</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">خدمات الأكاديمية</h2>
+        <div class="cards-container">
+            
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-comments"></i></div>
+                <h3>جلسات التخاطب</h3>
+                <p>علاج تأخر الكلام، لدغات الحروف، والتلعثم باستخدام أحدث البرامج العلاجية.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-puzzle-piece"></i></div>
+                <h3>تأهيل أطفال التوحد</h3>
+                <p>برامج تدخل مبكر، تعديل سلوك، وتنمية المهارات الاجتماعية والاستقلالية.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-child"></i></div>
+                <h3>حضانة وروضة</h3>
+                <p>رعاية نهارية، تعليم منتسوري، تحفيظ قرآن، وأنشطة ترفيهية وتعليمية.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-book-reader"></i></div>
+                <h3>صعوبات التعلم</h3>
+                <p>جلسات خاصة لعلاج مشاكل القراءة والكتابة وتشتت الانتباه وفرط الحركة.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&q=80" alt="طفل يتعلم">
+        </div>
+        <div class="about-text">
+            <h2 class="section-title" style="margin:0 0 20px 0;">لماذا أكاديمية براعم؟</h2>
+            <p>نحن نؤمن بأن كل طفل لديه قدرات خاصة تحتاج لمن يكتشفها. فريقنا مكون من أخصائيين معتمدين في التربية الخاصة وعلم النفس.</p>
+            <br>
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle"></i> بيئة آمنة ومراقبة بالكاميرات.</li>
+                <li><i class="fas fa-check-circle"></i> تقارير متابعة دورية لولي الأمر.</li>
+                <li><i class="fas fa-check-circle"></i> برامج فردية مخصصة لكل طفل.</li>
+                <li><i class="fas fa-check-circle"></i> دمج الأطفال وتنمية المهارات الاجتماعية.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>أكاديمية براعم</h2>
+            <p>العنوان: القاهرة، [اكتب عنوانك هنا بالتفصيل]</p>
+            <p>تليفون: 01000000000</p>
+            <br>
+            <p>© جميع الحقوق محفوظة لأكاديمية براعم 2024</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/201000000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
